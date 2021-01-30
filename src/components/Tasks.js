@@ -3,17 +3,17 @@ import Task from './Task';
 
 
 
-const Tasks = ({tasks, onDelete, toggleReminder}) => {
+const Tasks = ({tasks, onDelete, onToggle}) => {
     
         
           return(
                 <>
                 {
-                 tasks.length > 0 ?  tasks.map((task, i) => (
-                     <Task key={i} task={task} onDelete={onDelete} toggleReminder={toggleReminder}/> 
+                  tasks.map((task, i) => (
+                     <Task key={i} task={task} onDelete={onDelete} onToggle={onToggle}/> 
                     )    
                         
-                    ) :  'No tasks to display.'
+                    ) 
                 }
                 </>
           )  
