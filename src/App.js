@@ -3,6 +3,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import {v4 as uuidv4} from 'uuid'
 import { useState } from 'react'
+
 function App() {
   const [tasks, setTasks] = useState([{
     id:1,
@@ -23,6 +24,8 @@ function App() {
     reminder:true
 }])
 
+const [btnState,setbtnState] = useState(true);
+
 // Add task
 const addTask = (task) => {
   const id = uuidv4();
@@ -41,11 +44,19 @@ const onToggle = (id) => {
 setTasks(tasks.map(task => task.id === id ? {...task,reminder:!task.reminder} : task));
 }
 
+// 
+
+
+    const onAdd = () => {
+        setbtnState(!btnState)
+    }
+
   return (
     <div className="container">
-      <Header />
-      <AddTask addTask={addTask}/>
+      <Header onAdd={onAdd} btnState={btnState}/>
+      <AddTask addTask={addTask} btnState={btnState}/>
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={onDelete} onToggle={onToggle}/> : 'No tasks to display.'}
+      
     </div>
   );
 }

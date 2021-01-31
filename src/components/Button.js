@@ -1,13 +1,11 @@
-import React from 'react'
 
-const Button = ({color, text}) => {
+const Button = ({onAdd,btnState}) => {
 
-
+    
    
-
     return (
         <div>
-            <button style={{backgroundColor: color}} className='btn'>{text}</button>
+            <button style={{backgroundColor: btnState ? 'red' : 'green'}} className='btn' onDoubleClick={onAdd}>{btnState ? 'Close' : 'Open'}</button>
         </div>
     )
 }
